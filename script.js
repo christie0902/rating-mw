@@ -1,16 +1,26 @@
-const textRating = document.querySelector('.rating__value').textContent
-const stars = document.querySelectorAll('.rating__star')
+// const textRating = document.querySelector(".rating__value").textContent;
+// const stars = document.querySelectorAll(".rating__star");
 
-stars.forEach((star, index) => {
-    star.addEventListener('click', (e) => {
-        console.log('The stars NodeList:')
-        console.log(stars)
-        console.log('The clicked star element:')
-        console.log(star)
-        console.log('The index of the clicked star in the NodeList:')
-        console.log(index)
-        console.log('Rating expressed by text:')
-        console.log(textRating)
-        console.log('-------------------------------------------------------------------------')
-    })
-})
+// stars.forEach((star, i) => {
+//   star.addEventListener("click", (e) => {
+//     star.classList.add("rating__star--on");
+//     let rating = i + 1;
+//     textRating.innerText = `${rating}`;
+//   });
+// });
+
+const textRating = document.querySelector(".rating__value");
+const stars = document.querySelectorAll(".rating__star");
+
+stars.forEach((star, i) => {
+  star.addEventListener("click", (e) => {
+    stars.forEach((star) => star.classList.remove("rating__star--on"));
+
+    for (let j = 0; j <= i; j++) {
+      stars[j].classList.add("rating__star--on");
+    }
+
+    // Set the rating value
+    textRating.innerText = `${i + 1}`;
+  });
+});
